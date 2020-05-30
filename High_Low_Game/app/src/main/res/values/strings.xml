@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HighLowGame</string>
+    <string name="HighLowGameText">High Low Game</string>
+    <string name="tooHigh">Your guess is too high.</string>
+    <string name="tooLow">Your guess is too low.</string>
+    <string name="correct">You guessed correctly!</string>
+    <string name="guessText">guess</string>
+    <string name="hintText">Enter a guess here.</string>
+</resources>
