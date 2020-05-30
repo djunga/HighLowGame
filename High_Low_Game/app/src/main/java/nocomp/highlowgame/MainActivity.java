@@ -1,9 +1,8 @@
-package nocomp.hw1;
+package nocomp.highlowgame;
 
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,28 +13,47 @@ import java.util.Random;
 import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity {
-//int num = 0;
+int num = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-/*        Random rand = new Random();
-        num = rand.nextInt(100);*/
+        Random rand = new Random();
+        num = rand.nextInt(100);
         setContentView(R.layout.activity_main);
-        //initGuessButton();
+        TextView answer = findViewById(R.id.Answer);
+        Resources res = getResources();
+        //answer.setText(res.getString(R.string.answer, num));
+        String numStr = "" + num;
+        String answerString = res.getString(R.string.answer, numStr);
+        answer.setText(answerString);
+        initGuessButton();
     }
-/*    private void initGuessButton() {
-        Button displayButton = findViewById(R.id.buttonDisplay);
-        displayButton.setOnClickListener(new View.OnClickListener() {
+    private void initGuessButton() {
+        Button guessButton = findViewById(R.id.buttonGuess);
+        guessButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                EditText editName = (EditText) findViewById(R.id.editTextName);
-                TextView textDisplay = (TextView) findViewById(R.id.textViewDisplay);
-                String nameToDisplay = editName.getText().toString();
+                EditText editGuess = findViewById(R.id.editTextGuess);
+                TextView textResponse = findViewById(R.id.textViewResponse);
+                int input = Integer.parseInt(editGuess.getEditableText().toString());
                 Resources res = getResources();
-                String displayString = res.getString(R.string.welcome_messages, nameToDisplay);
-                textDisplay.setText(displayString);
+                if(input > num) {
+                    String tooHighString = res.getString(R.string.tooHigh);
+                    textResponse.setText(tooHighString);
+                    textResponse.setVisibility(VISIBLE);
+                }
+                else if(input < num) {
+                    String tooLowString = res.getString(R.string.tooLow);
+                    textResponse.setText(tooLowString);
+                    textResponse.setVisibility(VISIBLE);
+                }
+                else {
+                    String correctString = res.getString(R.string.correct);
+                    textResponse.setText(correctString);
+                    textResponse.setVisibility(VISIBLE);
+                }
             }
         });
-    }*/
+    }
 }

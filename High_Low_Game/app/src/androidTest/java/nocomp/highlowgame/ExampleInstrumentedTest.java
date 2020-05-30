@@ -1,4 +1,4 @@
-package nocomp.hw1;
+package nocomp.highlowgame;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
